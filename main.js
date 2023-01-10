@@ -2,7 +2,7 @@ const allDigits = document.querySelectorAll(".digit");
 const screen = document.querySelector(".screen p");
 const clearBtn = document.querySelector(".clear");
 const allOperators = document.querySelectorAll(".operator");
-const equals = document.querySelector(".equal");
+const equals = document.querySelector(".equals");
 const decPoint = document.querySelector('.point');
 
 let a = null;
@@ -39,17 +39,20 @@ operator = (a, b, op) => {
   }
    !Number.isInteger(result) ? screen.textContent = result.toFixed(2) : screen.textContent = result
 };
+
 equals.addEventListener("click", (event) => {
   operator(a, b, op);
   a = +screen.textContent;
   b = null;
 });
+
 allDigits.forEach((numBtn) => {
   numBtn.addEventListener("click", (event) => {
     screen.textContent += numBtn.textContent;
     b = +screen.textContent.split(op)[1]
   });
 });
+
 allOperators.forEach((operatorBtn) => {
   operatorBtn.addEventListener("click", (event) => {
     if(b){
