@@ -26,7 +26,16 @@ point = () => {
   decPoint.disabled = true;
   screen.textContent += decPoint.textContent
 }
-remove = () => screen.textContent = screen.textContent.slice(0,-1);
+remove = () => {
+  if(screen.textContent.length === 0){
+    a =null;
+    b = null;
+    op = null;
+  }
+  
+  screen.textContent = screen.textContent.slice(0,-1)
+  b = +screen.textContent.split('op')[screen.textContent.length-1]
+};
 
 change = () => {
     if(!b){
