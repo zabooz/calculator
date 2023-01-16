@@ -32,9 +32,9 @@ remove = () => {
     b = null;
     op = null;
   }
-  
   screen.textContent = screen.textContent.slice(0,-1)
-  b = +screen.textContent.split('op')[screen.textContent.length-1]
+  a = +screen.textContent.split(op).filter(Number)[0]
+  b = +screen.textContent.split(op).filter(Number)[1]
 };
 
 change = () => {
@@ -75,6 +75,7 @@ equals.addEventListener("click", (event) => {
   operator(a, b, op);
   a = +screen.textContent;
   b = null;
+  op = null;
 
 });
 
@@ -99,11 +100,14 @@ allOperators.forEach((operatorBtn) => {
     if(b){
       operator(a,b,op);
       b = null;
+      op = null;
       decPoint.disabled = false;
     }
     a = +screen.textContent
     screen.textContent += operatorBtn.textContent;
-    op = operatorBtn.textContent;
+    if(a){
+      op = operatorBtn.textContent;
+    }
     decPoint.disabled = false;
 
   });
